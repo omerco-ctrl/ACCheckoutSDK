@@ -1,0 +1,6 @@
+framework module ACCheckoutSDK {
+  umbrella header "ACCheckoutSDK.h"
+  export *
+
+  module * { export * }
+}
