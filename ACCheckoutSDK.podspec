@@ -1,18 +1,20 @@
-# ACCheckoutSDK.podspec
 Pod::Spec.new do |s|
   s.name             = 'ACCheckoutSDK'
-  s.version          = '2.4.0'
-  s.summary          = 'In-app checkout SDK.'
-  s.description      = 'ACCheckoutSDK provides checkout flows and utilities.'
-  s.homepage         = 'https://github.com/<ORG_OR_USER>/ACCheckoutSDK' # <- real, public URL
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }           # ensure LICENSE exists
-  s.authors          = { 'Omer Cohen' => 'omer.co@appcharge.com' }      # optional
-  s.source           = { :git => 'https://github.com/<ORG_OR_USER>/ACCheckoutSDK.git', :tag => s.version.to_s }
+  s.version          = '2.6.0'
+  s.summary          = 'Appcharge Checkout SDK'
+  s.homepage         = 'https://github.com/omerco-ctrl/ACCheckoutSDK'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = { 'Omer Cohen' => 'omer.co@appcharge.com' }
 
-  s.platform         = :ios, '14.0'
-  s.swift_versions   = ['5.9', '5.10']
-  s.module_name      = 'ACCheckoutSDK'
-  s.static_framework = true
-  s.requires_arc     = true
+  s.platform         = :ios, '13.0'
+  s.swift_versions   = ['5.7', '5.8', '5.9', '5.10']
+
+  # 👉 Point to your repo and tag that matches s.version
+  s.source           = { :git => 'https://github.com/omerco-ctrl/ACCheckoutSDK.git',
+                         :tag => s.version.to_s }
+
+  # 👉 The framework that’s in the repo at the root
   s.vendored_frameworks = 'ACCheckoutSDK.xcframework'
+
+  # (If you need resources, add s.resource_bundles or s.resources here)
 end
