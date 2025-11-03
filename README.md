@@ -119,12 +119,6 @@ Example output:
 
 ---
 
-## 📄 License
-
-MIT
-
----
-
 ## 🙋 Questions?
 
 If you’re unsure about the process, ask a team lead before running the script. This process affects production versioning.
