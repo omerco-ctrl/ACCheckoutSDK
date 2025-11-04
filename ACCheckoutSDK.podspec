@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ACCheckoutSDK'
-  s.version          = '2.7.0'
+  s.version          = '2.9.0'
   s.summary          = 'Appcharge Checkout SDK'
   s.homepage         = 'https://github.com/omerco-ctrl/ACCheckoutSDK'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
