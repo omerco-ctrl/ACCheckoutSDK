@@ -14,32 +14,50 @@ import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 import ObjectiveC.runtime
+public struct CustomerModel : Swift.Codable {
+  public init(id: Swift.String, email: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ACErrorMessage : Swift.Codable {
+  public let code: Swift.Int
+  public let message: Swift.String
+  public let data: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class ACBridgeAPI : ObjectiveC.NSObject {
+  weak public static var delegate: (any ACCheckoutSDK.ACCheckoutPurchaseDelegate)? {
+    get
+    set
+  }
+  public static var useExternalBrowser: Swift.Bool? {
+    get
+    set
+  }
+  public static var portraitOrientationLock: Swift.Bool? {
+    get
+    set
+  }
+  public static func initialize(configModel: ACCheckoutSDK.ACConfigModel, customerId: Swift.String)
+  public static func getPricePoints()
+  public static func award(orderId: Swift.String, publisherTransactionId: Swift.String = "")
+  public static func getNoneAwarded()
+  public static func openCheckout(sessionToken: Swift.String, purchaseId: Swift.String, url: Swift.String)
+  public static func handleDeepLink(_ url: Foundation.URL)
+  public static func getSdkVersion() -> Swift.String
+  public static func openSubscriptionManager(url: Swift.String)
+  @objc deinit
+}
+public struct PriceDetailModel : Swift.Codable {
+  public let price: Swift.Int
+  public let currency: Swift.String
+  public init(price: Swift.Int, currency: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
 public enum NetworkError : Swift.Error {
   case generic(ACCheckoutSDK.ACRequestError)
-}
-public struct PricePoints : Swift.Codable {
-  public var pricingPoints: [ACCheckoutSDK.PricingPoint]
-  public var pricingPointData: ACCheckoutSDK.PricingPointData
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
-}
-public struct PricingPoint : Swift.Codable {
-  public var basePriceInUSD: Swift.String
-  public var localizedPrice: Swift.String
-  public var formattedPrice: Swift.String
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
-}
-public struct PricingPointData : Swift.Codable {
-  public var currencyCode: Swift.String
-  public var currencySymbol: Swift.String
-  public var fractionalSeparator: Swift.String
-  public var milSeparator: Swift.String
-  public var symbolPosition: Swift.String
-  public var spacing: Swift.Bool
-  public var multiplier: Swift.Int
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
 }
 public enum ACHttpMethod : Swift.String {
   case GET
@@ -67,29 +85,12 @@ extension ACCheckoutSDK.ACBaseNetworkRequest {
     get
   }
 }
-public struct OfferModel : Swift.Codable {
-  public init(name: Swift.String, sku: Swift.String, assetUrl: Swift.String, description: Swift.String)
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
-}
-extension Foundation.CharacterSet {
-  public static let acURLQueryAllowed: Foundation.CharacterSet
-}
-public struct CustomerModel : Swift.Codable {
-  public init(id: Swift.String, email: Swift.String)
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
-}
-public protocol ACCheckoutPurchaseDelegate : AnyObject {
-  func onInitialized()
-  func onInitializeFailed(error: ACCheckoutSDK.ACErrorMessage)
-  func onPricePointsSuccess(pricePoints: ACCheckoutSDK.PricePoints)
-  func onPricePointsFailed(errorMessage: ACCheckoutSDK.ACErrorMessage)
-  func onPurchaseSuccess(order: ACCheckoutSDK.GameOrderResponse)
-  func onPurchaseFailed(error: ACCheckoutSDK.ACErrorMessage)
-  func onAward(success: Swift.Bool)
-  func onNoneAwardedSuccess(orderIds: [Swift.String])
-  func onNoneAwardedFailed(error: ACCheckoutSDK.ACErrorMessage)
+@_hasMissingDesignatedInitializers final public class InmOrientationBridge {
+  @discardableResult
+  public static func installIfNeeded() -> Swift.Bool
+  public static func beginForcePortrait(animated: Swift.Bool = false)
+  public static func endForcePortrait(andThen completion: @escaping () -> Swift.Void)
+  @objc deinit
 }
 public enum ACCheckoutErrorCode : Swift.Int, Swift.Error {
   case httpRequest
@@ -124,61 +125,10 @@ public enum ACCheckoutErrorCode : Swift.Int, Swift.Error {
     get
   }
 }
-public struct ACErrorMessage : Swift.Codable {
-  public let code: Swift.Int
-  public let message: Swift.String
-  public let data: Swift.String?
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
-}
-@_hasMissingDesignatedInitializers public class ACNetworkManager {
-  @objc deinit
-}
-public enum ACRequestErrorCode : Swift.Error, Swift.Equatable {
-  case noInternet
-  case invalidResponse
-  case decodingError
-  case encodingError
-  case encriptionError
-  case invalidURL
-  case noResponse
-  case unauthorized
-  case unexpectedStatusCode
-  case unknown
-  case forbiddenUrl
-  case requestError(errorCode: Swift.Int)
-  public static func == (a: ACCheckoutSDK.ACRequestErrorCode, b: ACCheckoutSDK.ACRequestErrorCode) -> Swift.Bool
-}
-public class ACRequestError : Swift.Error {
-  final public let errorCode: ACCheckoutSDK.ACRequestErrorCode
-  final public let errorMessage: Swift.String?
-  public var rawResponse: Foundation.Data?
-  public init(errorCode: ACCheckoutSDK.ACRequestErrorCode, errorMessage: Swift.String? = nil)
-  @objc deinit
-}
-public struct PriceDetailModel : Swift.Codable {
-  public let price: Swift.Int
-  public let currency: Swift.String
-  public init(price: Swift.Int, currency: Swift.String)
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
-}
-@_hasMissingDesignatedInitializers final public class InmOrientationBridge {
-  @discardableResult
-  public static func installIfNeeded() -> Swift.Bool
-  public static func beginForcePortrait(animated: Swift.Bool = false)
-  public static func endForcePortrait(andThen completion: @escaping () -> Swift.Void)
-  @objc deinit
-}
 public struct ACConfigModel : Swift.Codable {
   public init(checkoutPublicKey: Swift.String, environment: Swift.String, redirectUrl: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
-}
-public class ACNetworkService<Request, Response> where Request : ACCheckoutSDK.ACBaseNetworkRequest, Response : Swift.Decodable, Response : Swift.Encodable {
-  public init(request: Request)
-  public func send(completion: @escaping (Swift.Result<Response, ACCheckoutSDK.ACRequestError>) -> Swift.Void)
-  @objc deinit
 }
 public struct GameOrderResponse : Swift.Codable {
   public let date: Swift.Int?
@@ -240,32 +190,27 @@ public struct Product : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class ACBridgeAPI : ObjectiveC.NSObject {
-  weak public static var delegate: (any ACCheckoutSDK.ACCheckoutPurchaseDelegate)? {
-    get
-    set
-  }
-  public static var useExternalBrowser: Swift.Bool? {
-    get
-    set
-  }
-  public static var portraitOrientationLock: Swift.Bool? {
-    get
-    set
-  }
-  public static func initialize(configModel: ACCheckoutSDK.ACConfigModel, customerId: Swift.String)
-  public static func getPricePoints()
-  public static func award(orderId: Swift.String, publisherTransactionId: Swift.String = "")
-  public static func getNoneAwarded()
-  public static func openCheckout(sessionToken: Swift.String, purchaseId: Swift.String, url: Swift.String)
-  public static func handleDeepLink(_ url: Foundation.URL)
-  public static func getSdkVersion() -> Swift.String
-  public static func openSubscriptionManager(url: Swift.String)
-  @objc deinit
+public enum ACRequestErrorCode : Swift.Error, Swift.Equatable {
+  case noInternet
+  case invalidResponse
+  case decodingError
+  case encodingError
+  case encriptionError
+  case invalidURL
+  case noResponse
+  case unauthorized
+  case unexpectedStatusCode
+  case unknown
+  case forbiddenUrl
+  case requestError(errorCode: Swift.Int)
+  public static func == (a: ACCheckoutSDK.ACRequestErrorCode, b: ACCheckoutSDK.ACRequestErrorCode) -> Swift.Bool
 }
-public struct ItemModel : Swift.Encodable {
-  public init(name: Swift.String, assetUrl: Swift.String, sku: Swift.String, quantity: Swift.Int, quantityDisplay: Swift.String)
-  public func encode(to encoder: any Swift.Encoder) throws
+public class ACRequestError : Swift.Error {
+  final public let errorCode: ACCheckoutSDK.ACRequestErrorCode
+  final public let errorMessage: Swift.String?
+  public var rawResponse: Foundation.Data?
+  public init(errorCode: ACCheckoutSDK.ACRequestErrorCode, errorMessage: Swift.String? = nil)
+  @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency final public class RotatedSafariWrapperViewController : UIKit.UIViewController, SafariServices.SFSafariViewControllerDelegate {
   @_Concurrency.MainActor @preconcurrency @objc override final public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
@@ -287,6 +232,61 @@ public enum OrientationSwizzler_App {
   public static func endRestore(animated: Swift.Bool = true)
   public static func endRestore()
   public static func endRestoreAndThen(_ completion: @escaping () -> Swift.Void)
+}
+extension Foundation.CharacterSet {
+  public static let acURLQueryAllowed: Foundation.CharacterSet
+}
+public struct ItemModel : Swift.Encodable {
+  public init(name: Swift.String, assetUrl: Swift.String, sku: Swift.String, quantity: Swift.Int, quantityDisplay: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class ACNetworkManager {
+  @objc deinit
+}
+public struct PricePoints : Swift.Codable {
+  public var pricingPoints: [ACCheckoutSDK.PricingPoint]
+  public var pricingPointData: ACCheckoutSDK.PricingPointData
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PricingPoint : Swift.Codable {
+  public var basePriceInUSD: Swift.String
+  public var localizedPrice: Swift.String
+  public var formattedPrice: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PricingPointData : Swift.Codable {
+  public var currencyCode: Swift.String
+  public var currencySymbol: Swift.String
+  public var fractionalSeparator: Swift.String
+  public var milSeparator: Swift.String
+  public var symbolPosition: Swift.String
+  public var spacing: Swift.Bool
+  public var multiplier: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol ACCheckoutPurchaseDelegate : AnyObject {
+  func onInitialized()
+  func onInitializeFailed(error: ACCheckoutSDK.ACErrorMessage)
+  func onPricePointsSuccess(pricePoints: ACCheckoutSDK.PricePoints)
+  func onPricePointsFailed(errorMessage: ACCheckoutSDK.ACErrorMessage)
+  func onPurchaseSuccess(order: ACCheckoutSDK.GameOrderResponse)
+  func onPurchaseFailed(error: ACCheckoutSDK.ACErrorMessage)
+  func onAward(success: Swift.Bool)
+  func onNoneAwardedSuccess(orderIds: [Swift.String])
+  func onNoneAwardedFailed(error: ACCheckoutSDK.ACErrorMessage)
+}
+public struct OfferModel : Swift.Codable {
+  public init(name: Swift.String, sku: Swift.String, assetUrl: Swift.String, description: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public class ACNetworkService<Request, Response> where Request : ACCheckoutSDK.ACBaseNetworkRequest, Response : Swift.Decodable, Response : Swift.Encodable {
+  public init(request: Request)
+  public func send(completion: @escaping (Swift.Result<Response, ACCheckoutSDK.ACRequestError>) -> Swift.Void)
+  @objc deinit
 }
 extension ACCheckoutSDK.ACHttpMethod : Swift.Equatable {}
 extension ACCheckoutSDK.ACHttpMethod : Swift.Hashable {}
