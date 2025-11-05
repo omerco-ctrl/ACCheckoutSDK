@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   # Crash reporting:
-  s.vendored_dsym = 'ACCheckoutSDK.dSYM'
+  # s.vendored_dsym = 'ACCheckoutSDK.dSYM'
 
 end
+ 
