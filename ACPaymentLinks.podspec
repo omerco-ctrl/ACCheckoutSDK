@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = '3.0.5'
   s.summary          = 'Appcharge Checkout SDK'
   s.description      = 'A lightweight static binary SDK for Appcharge checkout.'
-  s.homepage         = 'https://github.com/omerco-ctrl/ACPaymentLinks'
+  s.homepage         = 'https://github.com/omerco-ctrl/ACCheckoutSDK'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Omer Cohen' => 'omer.co@appcharge.com' }
 
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.cocoapods_version = '>= 1.16.0'
 
   # Your public repo and tag that matches s.version
-  s.source           = { :git => 'https://github.com/omerco-ctrl/ACPaymentLinks.git',
+  s.source           = { :git => 'https://github.com/omerco-ctrl/ACCheckoutSDK.git',
                          :tag => s.version.to_s }
 
   # Vendored static XCFramework at repo root (no scripts/resources)
