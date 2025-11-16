@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
-  s.name             = 'ACCheckoutSDK'
+  s.name             = 'ACPaymentLinks'
   s.version          = '3.0.5'
   s.summary          = 'Appcharge Checkout SDK'
   s.description      = 'A lightweight static binary SDK for Appcharge checkout.'
-  s.homepage         = 'https://github.com/omerco-ctrl/ACCheckoutSDK'
+  s.homepage         = 'https://github.com/omerco-ctrl/ACPaymentLinks'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Omer Cohen' => 'omer.co@appcharge.com' }
 
@@ -14,11 +14,11 @@ Pod::Spec.new do |s|
   s.cocoapods_version = '>= 1.16.0'
 
   # Your public repo and tag that matches s.version
-  s.source           = { :git => 'https://github.com/omerco-ctrl/ACCheckoutSDK.git',
+  s.source           = { :git => 'https://github.com/omerco-ctrl/ACPaymentLinks.git',
                          :tag => s.version.to_s }
 
   # Vendored static XCFramework at repo root (no scripts/resources)
-  s.vendored_frameworks = 'ACCheckoutSDK.xcframework'
+  s.vendored_frameworks = 'ACPaymentLinks.xcframework'
 
   # Force static linkage to avoid embed phases in host apps
   s.static_framework = true
