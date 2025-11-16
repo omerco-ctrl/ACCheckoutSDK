@@ -1,0 +1,6 @@
+framework module ACPaymentLinks {
+  umbrella header "ACPaymentLinks.h"
+  export *
+
+  module * { export * }
+}

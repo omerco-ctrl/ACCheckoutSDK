@@ -1,4 +1,4 @@
-## ACCheckoutSDK v2.8.0 – November 2025
+## ACCheckoutSDK v3.0.4 – November 2025
 
 ### 🚀 New Features
 - Added 3DS2 secure checkout flow for better authentication support.
