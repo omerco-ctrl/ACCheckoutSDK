@@ -14,4 +14,3 @@ FOUNDATION_EXPORT double ACPaymentLinksVersionNumber;
 FOUNDATION_EXPORT const unsigned char ACPaymentLinksVersionString[];
 
 #import <ACPaymentLinks/ACBridgeAPI_Bridge.h>
-

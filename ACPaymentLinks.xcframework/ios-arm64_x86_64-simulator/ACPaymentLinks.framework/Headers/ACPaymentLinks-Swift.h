@@ -417,6 +417,10 @@ SWIFT_CLASS("_TtC14ACPaymentLinks14ACErrorMessage")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@interface ACErrorMessage (SWIFT_EXTENSION(ACPaymentLinks))
+- (NSString * _Nonnull)toJsonString SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class PricePoints;
 @class GameOrderResponse;
 SWIFT_PROTOCOL("_TtP14ACPaymentLinks22ACPaymentLinksDelegate_")
@@ -446,6 +450,10 @@ SWIFT_CLASS("_TtC14ACPaymentLinks17GameOrderResponse")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@interface GameOrderResponse (SWIFT_EXTENSION(ACPaymentLinks))
+- (NSString * _Nonnull)toJsonString SWIFT_WARN_UNUSED_RESULT;
+@end
+
 SWIFT_CLASS("_TtC14ACPaymentLinks18OrderResponseModel")
 @interface OrderResponseModel : NSObject
 @end
@@ -456,6 +464,10 @@ SWIFT_CLASS("_TtC14ACPaymentLinks11PricePoints")
 @interface PricePoints : NSObject
 @property (nonatomic, copy) NSArray<PricingPoint *> * _Nonnull pricingPoints;
 @property (nonatomic, strong) PricingPointData * _Nonnull pricingPointData;
+@end
+
+@interface PricePoints (SWIFT_EXTENSION(ACPaymentLinks))
+- (NSString * _Nonnull)toJsonString SWIFT_WARN_UNUSED_RESULT;
 @end
 
 SWIFT_CLASS("_TtC14ACPaymentLinks12PricingPoint")
@@ -927,6 +939,10 @@ SWIFT_CLASS("_TtC14ACPaymentLinks14ACErrorMessage")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@interface ACErrorMessage (SWIFT_EXTENSION(ACPaymentLinks))
+- (NSString * _Nonnull)toJsonString SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class PricePoints;
 @class GameOrderResponse;
 SWIFT_PROTOCOL("_TtP14ACPaymentLinks22ACPaymentLinksDelegate_")
@@ -956,6 +972,10 @@ SWIFT_CLASS("_TtC14ACPaymentLinks17GameOrderResponse")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@interface GameOrderResponse (SWIFT_EXTENSION(ACPaymentLinks))
+- (NSString * _Nonnull)toJsonString SWIFT_WARN_UNUSED_RESULT;
+@end
+
 SWIFT_CLASS("_TtC14ACPaymentLinks18OrderResponseModel")
 @interface OrderResponseModel : NSObject
 @end
@@ -966,6 +986,10 @@ SWIFT_CLASS("_TtC14ACPaymentLinks11PricePoints")
 @interface PricePoints : NSObject
 @property (nonatomic, copy) NSArray<PricingPoint *> * _Nonnull pricingPoints;
 @property (nonatomic, strong) PricingPointData * _Nonnull pricingPointData;
+@end
+
+@interface PricePoints (SWIFT_EXTENSION(ACPaymentLinks))
+- (NSString * _Nonnull)toJsonString SWIFT_WARN_UNUSED_RESULT;
 @end
 
 SWIFT_CLASS("_TtC14ACPaymentLinks12PricingPoint")
