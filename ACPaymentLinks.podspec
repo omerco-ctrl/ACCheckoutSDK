@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ACPaymentLinks'
-  s.version          = '3.0.5'
+  s.version          = '3.0.6'
   s.summary          = 'Appcharge Checkout SDK'
   s.description      = 'A lightweight static binary SDK for Appcharge checkout.'
   s.homepage         = 'https://github.com/omerco-ctrl/ACCheckoutSDK'

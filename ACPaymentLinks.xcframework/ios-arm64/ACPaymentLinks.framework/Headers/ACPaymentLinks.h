@@ -13,6 +13,5 @@ FOUNDATION_EXPORT double ACPaymentLinksVersionNumber;
 //! Project version string for ACPaymentLinks.
 FOUNDATION_EXPORT const unsigned char ACPaymentLinksVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <ACPaymentLinks/PublicHeader.h>
-
+#import <ACPaymentLinks/ACBridgeAPI_Bridge.h>
 

@@ -1,126 +1,78 @@
-# 📦 ACCheckoutSDK
+# 💳 ACPaymentLinks 
 
-ACCheckoutSDK is a lightweight, in-app iOS checkout SDK. This repository includes the source code, Cocoapods integration, and automated build & release flow.
+ACPaymentLinks is a lightweight, in-app iOS checkout SDK by Appcharge.  
+This repository contains the public CocoaPods integration and a prebuilt static `.xcframework`.
 
----
+## 📦 SDK Overview
 
-## 🚧 Branching Workflow
+- **Minimum iOS:** 13.0  
+- **Framework type:** Static `.xcframework`  
+- **Distribution:** CocoaPods  
+- **Swift:** 5.7–5.10  
+- **Xcode:** 15 or newer  
+- **CocoaPods:** 1.16.0 or newer  
+- **CocoaPods page:** https://cocoapods.org/pods/ACPaymentLinks
 
-- All development is done on **feature branches** pulled out of `develop`.
-- When a feature is complete, it's merged into `develop`.
-- Once QA approves a version, `develop` is merged into **`release/xcframework`**.
-- From `release/xcframework`, we run the release script to:
-  - Update version numbers
-  - Build a new `.xcframework`
-  - Tag and push to Git
+## 📲 Installation (CocoaPods)
 
----
+### If your project does not use CocoaPods yet:
 
-## 🚀 Releasing a New Version
+#### Install CocoaPods:
+sudo gem install cocoapods
+pod --version
 
-> ✅ **IMPORTANT:** Only run the release script from the `release/xcframework` branch, and only after QA approval.
+#### Initialize CocoaPods:
+pod init
 
-### 1. ✅ Prerequisites
+#### Install pods:
+pod repo update
+pod install
 
-- Xcode command line tools
-- Git
-- macOS Terminal
-- Permission to push to the repository
-
-Ensure your branch is up to date:
-
-```bash
-git checkout release/xcframework
-git pull
-```
+Open the workspace:
+YourApp.xcworkspace
 
 ---
 
-### 2. 🔐 Make the Script Executable
+## Add the Appcharge SDK
+Edit Podfile:
 
-Run this once to allow the script to run:
+platform :ios, '13.0'
+target 'YourApp' do
+  pod 'ACPaymentLinks'
+end
 
-```bash
-chmod +x build.sh
-```
-
----
-
-### 3. 🏁 Run the Script
-
-To build and release a new version:
-
-```bash
-./build.sh <version>
-```
-
-Example:
-
-```bash
-./build.sh 1.2.0
-```
-
-This will:
-
-- Update the version in:
-  - `ACCheckoutSDK/Config/ACConfigManager.swift`
-  - `ACCheckoutSDK.podspec`
-- Remove old builds
-- Archive for iOS & iOS Simulator
-- Create a fresh `.xcframework`
-- Remove code signing metadata
-- Unlock `Info.plist` files
-- Commit, tag, and push to Git
+Then:
+pod repo update
+pod install
 
 ---
 
-## 🧰 Script Breakdown
+## 🚀 Basic Usage Example
 
-Here’s what `build.sh` does step-by-step:
+import UIKit
+import ACPaymentLinks
 
-1. **Reads version argument**
-2. **Updates**:
-   - `sdkV = "X.X.X"` inside Swift file
-   - `s.version = 'X.X.X'` inside `.podspec`
-3. **Cleans** old archives & frameworks
-4. **Archives**:
-   - iOS device build
-   - iOS simulator build
-5. **Creates** a universal `.xcframework`
-6. **Strips** code signing metadata
-7. **Commits** changes and pushes a Git tag
-
-Example output:
-```
-🛠️  Updating version in Swift file
-📦 Creating XCFramework
-📤 Committing and tagging version 1.2.0
-✅ Done: SDK v1.2.0 built, unsigned, tagged, and pushed to Git
-```
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Example usage here
+    }
+}
 
 ---
 
-## 📁 Files Affected
-
-- `ACCheckoutSDK/Config/ACConfigManager.swift`
-- `ACCheckoutSDK.podspec`
-- `ACCheckoutSDK.xcframework`
+## 🔄 Updating the SDK
+pod repo update
+pod update ACPaymentLinks
 
 ---
 
 ## 🧯 Troubleshooting
 
-| Error | Fix |
-|------|-----|
-| `Permission denied` | Run `chmod +x build.sh` |
-| `No version specified` | Run with version argument: `./build.sh 1.2.0` |
-| `File not found` | Make sure you're in the project root |
-| `git push failed` | Check your branch and remote permissions |
+Common errors and fixes included.
 
----
+## 📋 Requirements Recap
+iOS 13+, Xcode 15+, Swift 5.7–5.10, CocoaPods 1.16.0+
 
-## 🙋 Questions?
-
-If you’re unsure about the process, ask a team lead before running the script. This process affects production versioning.
-
----
+## 📄 License
+MIT
