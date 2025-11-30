@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name             = 'ACPaymentLinks'
-  s.version          = '3.1.2'
+  s.version          = '3.1.3'
   s.summary          = 'Appcharge Checkout SDK'
   s.description      = 'A lightweight static binary SDK for Appcharge checkout.'
   s.homepage         = 'https://github.com/omerco-ctrl/ACCheckoutSDK'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Omer Cohen' => 'omer.co@appcharge.com' }
+  s.author           = { 'App Charge' => 'omer.co@appcharge.com' }
 
   s.platform         = :ios, '13.0'
   s.swift_versions   = ['5.5', '5.9', '6.0', '6.1']

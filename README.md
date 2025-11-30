@@ -40,16 +40,17 @@ YourApp.xcworkspace
 
 ## Add the Appcharge SDK
 Edit Podfile:
-
+```swift
 platform :ios, '13.0'
 target 'YourApp' do
   pod 'ACPaymentLinks'
 end
-
+```
 Then:
+```bash
 pod repo update
 pod install
-
+```
 ---
 
 ## 🚀 Basic Usage Example
