@@ -29,6 +29,10 @@ void ac_set_use_external_browser(int value);
 /// value: -1 = nil, 0 = false, 1 = true
 void ac_set_portrait_orientation_lock(int value);
 
+/// Sets isDebugModeEnabled (nullable bool).
+/// value: -1 = nil, 0 = false, 1 = true
+void ac_set_is_debug_mode_enabled(int value);
+
 /// Triggers fetching price points.
 void ac_get_price_points(void);
 

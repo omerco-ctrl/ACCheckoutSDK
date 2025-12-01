@@ -28,6 +28,7 @@ pod --version
 ```bash
 pod init
 ```
+
 #### Install pods:
 ```bash
 pod repo update
@@ -46,6 +47,7 @@ target 'YourApp' do
   pod 'ACPaymentLinks'
 end
 ```
+
 Then:
 ```bash
 pod repo update

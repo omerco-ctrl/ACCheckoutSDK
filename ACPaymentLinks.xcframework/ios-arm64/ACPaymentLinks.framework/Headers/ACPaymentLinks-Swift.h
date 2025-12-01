@@ -325,6 +325,9 @@ SWIFT_CLASS_NAMED("ACBridgeAPI")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, weak) id <ACPaymentLinksDelegate> _Nullable delegate;)
 + (id <ACPaymentLinksDelegate> _Nullable)delegate SWIFT_WARN_UNUSED_RESULT;
 + (void)setDelegate:(id <ACPaymentLinksDelegate> _Nullable)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) NSNumber * _Nullable isDebugModeEnabled;)
++ (NSNumber * _Nullable)isDebugModeEnabled SWIFT_WARN_UNUSED_RESULT;
++ (void)setIsDebugModeEnabled:(NSNumber * _Nullable)newValue;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) NSNumber * _Nullable useExternalBrowser;)
 + (NSNumber * _Nullable)useExternalBrowser SWIFT_WARN_UNUSED_RESULT;
 + (void)setUseExternalBrowser:(NSNumber * _Nullable)newValue;
